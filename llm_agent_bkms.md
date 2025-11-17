@@ -1,12 +1,18 @@
-# Agent Training Guide: How to Use Agents for Effective Coding
 
-## Overview
+## WAMR LLM Subagent Overview
+![alt text](wamr-subagent-1.png)
+
+## How to Use Agents for Effective Coding
 
 ### Expectations for Large Language Models
 Most current LLMs serve as assistant roles, helping improve efficiency rather than completely replacing human work.
 
+### LLM Workflow
+![alt text](image-2.png)
+Reference link: https://it-1cicd-devops.gar.corp.intel.com/app/9d52aee1-7db8-4339-9678-7b648f787af5/workflow
+
 ### The Essence of Agents
-* The core concept is to tell the LLM: "Here is your task, here are the tools you can use, along with supplementary context. Think about it and then decide which tools to call."  
+* The core concept is to tell the LLM: "Here is your task, here are the tools you can use, along with supplementary context. Think about it and then decide which tools to call.  
 * The core operating mechanism enables an iterative cycle of Thought → Action → Observation.
 
 ![alt text](image-1.png)
