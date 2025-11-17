@@ -6,14 +6,24 @@
 Most current LLMs serve as assistant roles, helping improve efficiency rather than completely replacing human work.
 
 ### The Essence of Agents
-The core concept is to tell the LLM: "Here is your task, here are the tools you can use, along with supplementary context. Think about it and then decide which tools to call."
+* The core concept is to tell the LLM: "Here is your task, here are the tools you can use, along with supplementary context. Think about it and then decide which tools to call."  
+* The core operating mechanism enables an iterative cycle of Thought → Action → Observation.
+
+![alt text](image-1.png)
 
 ### Available Agent Tools
 - READ/WRITE/GREP/PATTERN/BASH/LIST, etc.
 
 ## Best Known Methods (BKMs)
 ### 1. Structured Organization
-Use Markdown headings (#, ##) and lists (-, *) to organize memory files, making them clear and readable.
+Use Markdown headings (#, ##) and lists (-, *) to organize memory files:
+
+**Easy to Read and Write**: Markdown is simple and clear, making it easy for both humans and machines to understand.  
+**Structured**: It helps organize text with headers, lists, and links, which improves comprehension.  
+**Commonly Used**: Many platforms use Markdown, so LLMs encounter it often and are familiar with it.  
+**Web-Friendly**: Markdown can be easily converted to HTML, making it useful for web content.  
+**Minimalistic**: It has less clutter, allowing LLMs to focus on the main content.  
+**Supports Code**: It can include code snippets, which is helpful for technical content.  
 
 ### 2. Provide Examples to Help LLM Understand
 LLMs are more sensitive to formatted data and code.
@@ -43,8 +53,8 @@ TEST_P(I32AddTest, BasicAddition_ReturnsCorrectSum) {
     ASSERT_EQ(12, call_i32_add(20, -8))    << "Addition of mixed-sign integers failed";
 }
 ```
-### 3. Use command to do the repeatedly input
-When you need to repeatedly input content more than three times.
+### 3. Use command to replace the repeatedly same input
+When you need to repeatedly input content more than two times.
 
 ### 4. Multiple Agents Context Sharing
 Multiple agents don't share context - they interact with each other through file storage.
@@ -158,7 +168,6 @@ Use version management with small iterative steps. When generating executable co
 - **Quality assurance:** You can test after each step to ensure code quality
 - **Learning opportunities:** By observing LLM's implementation methods, you can also learn new things
 
-
 ### 12. Control Flow Structure
 ```markdown
 After verification → Evaluate results:
@@ -188,9 +197,9 @@ Task is complete ONLY when:
 ### 14. Context Management Strategy
 **Manual compact at appropriate times:** When you see context usage approaching full capacity, manually execute the `/compact` command. This allows compression to occur at a more natural breakpoint, such as after completing a functional module or finishing a test round. Compressing at this time means the LLM is less likely to lose important information. If you wait for automatic compression, it might trigger right when you're in the middle of modifying code, which can easily cause problems.
 
-**Another technique:** For relatively independent tasks, simply start a new session. Since you've already documented the task plan, a new session can quickly get up to speed by reading the documentation. This is much wiser than struggling in a session that's about to explode.
+**Manual clear:** For relatively independent tasks, simply start a new session. Since you've already documented the task plan, a new session can quickly get up to speed by reading the documentation. This is much wiser than struggling in a session that's about to explode.
 
-## Kode - An Open Source Agent Tool
+## Kode - Used In WAMR
 Kode repository: https://github.com/shareAI-lab/Kode-cli
 
 ### Model Configuration
